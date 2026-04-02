@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Сейчас в прокате";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<ul>
+    @foreach (var movie in ViewBag.Movies)
+    {
+        <li>
+            <a href="/cinema/movie/@movie.Id">
+                @movie.Name
+            </a>
+        </li>
+    }
+</ul>

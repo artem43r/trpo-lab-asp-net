@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = ViewBag.MovieName;
+}
+
+<h1>@ViewBag.MovieName</h1>
+
+<p><strong>ID:</strong> @ViewBag.MovieId</p>
+<p><strong>Рейтинг:</strong> @ViewData["Rating"] ★</p>
+<p><strong>Длительность:</strong> @ViewData["Duration"] минут</p>
+
+<a href="/cinema">← Назад</a>

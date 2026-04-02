@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Сеансы";
+}
+
+<h1>Сеансы на @ViewBag.Date</h1>
+
+<ul>
+    @foreach (var time in ViewBag.Sessions)
+    {
+        <li>@time</li>
+    }
+</ul>
+
+<a href="/cinema">← Назад</a>
