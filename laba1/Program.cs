@@ -1,3 +1,4 @@
+
 using laba1.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductRepository, InMemoryProductRepository>();
+builder.Services.AddScoped<IClientRepository, InMemoryClientRepository>();
 
 var app = builder.Build();
 

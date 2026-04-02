@@ -1,0 +1,103 @@
+﻿@model laba1.Models.Client
+
+@{
+    ViewData["Title"] = "Детали клиента";
+}
+
+<h1>Детали клиента</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.INN)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.INN)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.RegistrationDate.ToString("dd.MM.yyyy")
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.IsActive)
+            {
+                <span class="badge bg-success">Активен</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Неактивен</span>
+            }
+        </dd>
+
+    </dl>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Информация</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    <strong>Дата регистрации:</strong>
+                    @Model.RegistrationDate.ToString("dd.MM.yyyy")
+                </p>
+                <p>
+                    <strong>Лет с нами:</strong>
+                    @Model.GetYearsWithUs() лет
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактировать</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-end">Удалить</a>
+</div>
