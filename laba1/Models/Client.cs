@@ -9,23 +9,23 @@ namespace laba1.Models
         [Required(ErrorMessage = "ФИО обязательно")]
         [StringLength(100, MinimumLength = 3)]
         [Display(Name = "ФИО")]
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
 
         [Display(Name = "Компания")]
-        public string Company { get; set; }
+        public string? Company { get; set; }
 
         [Required(ErrorMessage = "ИНН обязателен")]
         [RegularExpression(@"^\d{10}(\d{2})?$", ErrorMessage = "ИНН должен содержать 10 или 12 цифр")]
         [Display(Name = "ИНН")]
-        public string INN { get; set; }
+        public string? INN { get; set; }
 
         [Phone(ErrorMessage = "Некорректный телефон")]
         [Display(Name = "Телефон")]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         [EmailAddress(ErrorMessage = "Некорректный email")]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
