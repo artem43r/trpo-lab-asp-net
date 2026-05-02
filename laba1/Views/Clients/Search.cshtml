@@ -1,0 +1,23 @@
+﻿@model IEnumerable<laba1.Models.Client>
+
+<h2>Поиск клиентов</h2>
+
+<form method="get">
+    <input type="text" name="term" placeholder="Введите текст..." />
+    <button type="submit">Поиск</button>
+</form>
+
+@if (!Model.Any())
+{
+    <p>Ничего не найдено</p>
+}
+
+<table class="table">
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.FullName</td>
+            <td>@c.Email</td>
+        </tr>
+    }
+</table>

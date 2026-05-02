@@ -1,0 +1,32 @@
+﻿@model IEnumerable<laba1.Models.Client>
+
+@{
+    ViewData["Title"] = "Клиенты по дате";
+}
+
+<h2>Фильтр по дате регистрации</h2>
+
+<form method="get">
+    <input type="date" name="from" />
+    <input type="date" name="to" />
+    <button type="submit">Фильтр</button>
+</form>
+
+<table class="table">
+    <tr>
+        <th>ФИО</th>
+        <th>Компания</th>
+        <th>Дата</th>
+        <th>Активен</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.FullName</td>
+            <td>@c.Company</td>
+            <td>@c.RegistrationDate.ToShortDateString()</td>
+            <td>@(c.IsActive ? "Да" : "Нет")</td>
+        </tr>
+    }
+</table>

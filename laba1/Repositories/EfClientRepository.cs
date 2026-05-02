@@ -44,5 +44,51 @@ namespace laba1.Repositories
                 _context.SaveChanges();
             }
         }
+        // ===== LINQ МЕТОДЫ =====
+
+        // По дате регистрации
+        public IEnumerable<Client> GetClientsByDateRange(DateTime from, DateTime to) =>
+            _context.Clients
+                .Where(c => c.RegistrationDate >= from && c.RegistrationDate <= to)
+                .OrderBy(c => c.RegistrationDate)
+                .ToList();
+
+        // Топ старых клиентов (дольше всего зарегистрированы)
+        public IEnumerable<Client> GetOldestClients(int count) =>
+            _context.Clients
+                .OrderBy(c => c.RegistrationDate)
+                .Take(count)
+                .ToList();
+
+        // Поиск
+        public IEnumerable<Client> SearchClients(string term) =>
+            _context.Clients
+                .Where(c =>
+                    (c.FullName != null && c.FullName.Contains(term)) ||
+                    (c.Company != null && c.Company.Contains(term)) ||
+                    (c.Email != null && c.Email.Contains(term)))
+                .OrderBy(c => c.FullName)
+                .ToList();
+
+        // Группировка по активности (true / false)
+        public IEnumerable<IGrouping<bool, Client>> GetClientsGroupedByActivity() =>
+            _context.Clients
+                .GroupBy(c => c.IsActive)
+                .ToList();
+
+        // Пагинация
+        public IEnumerable<Client> GetClientsWithPagination(int page, int pageSize) =>
+            _context.Clients
+                .OrderBy(c => c.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+        // Количество страниц
+        public int GetTotalPages(int pageSize)
+        {
+            var total = _context.Clients.Count();
+            return (int)Math.Ceiling(total / (double)pageSize);
+        }
     }
 }

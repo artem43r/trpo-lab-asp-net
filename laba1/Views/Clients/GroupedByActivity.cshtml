@@ -1,0 +1,15 @@
+﻿@model IEnumerable<IGrouping<bool, laba1.Models.Client>>
+
+<h2>Группировка по активности</h2>
+
+@foreach (var group in Model)
+{
+    <h3>@(group.Key ? "Активные" : "Неактивные")</h3>
+
+    <ul>
+        @foreach (var c in group)
+        {
+            <li>@c.FullName (@c.Company)</li>
+        }
+    </ul>
+}

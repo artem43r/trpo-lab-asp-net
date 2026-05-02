@@ -1,0 +1,27 @@
+﻿@model IEnumerable<laba1.Models.Client>
+
+<h2>Клиенты (пагинация)</h2>
+
+<table class="table">
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.FullName</td>
+            <td>@c.Email</td>
+        </tr>
+    }
+</table>
+
+<div>
+    @if (ViewBag.CurrentPage > 1)
+    {
+        <a asp-action="Paginated" asp-route-page="@(ViewBag.CurrentPage - 1)">Назад</a>
+    }
+
+    <span>Страница @ViewBag.CurrentPage</span>
+
+    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+    {
+        <a asp-action="Paginated" asp-route-page="@(ViewBag.CurrentPage + 1)">Вперёд</a>
+    }
+</div>

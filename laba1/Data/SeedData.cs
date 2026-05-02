@@ -31,12 +31,30 @@ namespace laba1.Data
                     },
                     new Product
                     {
-                        Name = "Книга 'Изучаем C'",
+                        Name = "Книга 'Изучаем C#'",
                         Price = 1200,
                         Category = "Книги",
-                        Description = "Подробное руководство по C",
+                        Description = "Подробное руководство по C#",
                         CreatedDate = DateTime.Now.AddDays(-5),
                         InStock = false
+                    },
+                    new Product
+                    {
+                        Name = "Наушники Sony",
+                        Price = 8000,
+                        Category = "Электроника",
+                        Description = "Беспроводные наушники с шумоподавлением",
+                        CreatedDate = DateTime.Now.AddDays(-10),
+                        InStock = true
+                    },
+                    new Product
+                    {
+                        Name = "Рюкзак Xiaomi",
+                        Price = 3500,
+                        Category = "Аксессуары",
+                        Description = "Городской рюкзак для ноутбука",
+                        CreatedDate = DateTime.Now.AddDays(-20),
+                        InStock = true
                     }
                 };
 
@@ -76,6 +94,27 @@ namespace laba1.Data
                         Phone = "+79990001122",
                         Email = "anna@mail.ru",
                         RegistrationDate = DateTime.Now.AddYears(-2),
+                        IsActive = false
+                    },
+                    // ➕ добавленные
+                    new Client
+                    {
+                        FullName = "Сергей Кузнецов",
+                        Company = "ООО Альфа",
+                        INN = "1122334455",
+                        Phone = "+79995556677",
+                        Email = "sergey@mail.ru",
+                        RegistrationDate = DateTime.Now.AddMonths(-8),
+                        IsActive = true
+                    },
+                    new Client
+                    {
+                        FullName = "Мария Соколова",
+                        Company = "ИП Соколова",
+                        INN = "5566778899",
+                        Phone = "+79998887766",
+                        Email = "maria@mail.ru",
+                        RegistrationDate = DateTime.Now.AddYears(-4),
                         IsActive = false
                     }
                 };

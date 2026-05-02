@@ -108,5 +108,41 @@ namespace laba1.Controllers
             TempData["SuccessMessage"] = "Клиент удален!";
             return RedirectToAction(nameof(Index));
         }
+        // По дате
+        public IActionResult ByDate(DateTime from, DateTime to)
+        {
+            var clients = _repository.GetClientsByDateRange(from, to);
+            return View(clients);
+        }
+
+        // Старые клиенты
+        public IActionResult Oldest(int count = 5)
+        {
+            var clients = _repository.GetOldestClients(count);
+            return View(clients);
+        }
+
+        // Поиск
+        public IActionResult Search(string term)
+        {
+            var clients = _repository.SearchClients(term);
+            return View(clients);
+        }
+
+        // Группировка
+        public IActionResult GroupedByActivity()
+        {
+            var clients = _repository.GetClientsGroupedByActivity();
+            return View(clients);
+        }
+
+        // Пагинация
+        public IActionResult Paginated(int page = 1, int pageSize = 5)
+        {
+            var clients = _repository.GetClientsWithPagination(page, pageSize);
+            ViewBag.TotalPages = _repository.GetTotalPages(pageSize);
+            ViewBag.CurrentPage = page;
+            return View(clients);
+        }
     }
 }
