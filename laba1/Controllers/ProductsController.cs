@@ -129,15 +129,11 @@ namespace laba1.Controllers
 
         public IActionResult Search(string term)
         {
-            if (string.IsNullOrWhiteSpace(term))
-                return RedirectToAction(nameof(Index));
-
-            var products = _repository.SearchProducts(term);
+            var products = string.IsNullOrWhiteSpace(term)
+                ? new List<Product>()
+                : _repository.SearchProducts(term);
 
             ViewBag.SearchTerm = term;
-            ViewBag.Title = $"Поиск: {term}";
-            ViewBag.Count = products.Count();
-
             return View(products);
         }
 
