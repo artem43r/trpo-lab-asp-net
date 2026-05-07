@@ -34,7 +34,7 @@
         @if (ViewBag.HasPreviousPage)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Paginated" asp-routepage="@(ViewBag.CurrentPage - 1)">Назад</a>
+                <a class="page-link" asp-action="Paginated" asp-route-page="@(ViewBag.CurrentPage - 1)">Назад</a>
             </li>
         }
         else
@@ -46,13 +46,13 @@
         @for (int i = 1; i <= ViewBag.TotalPages; i++)
         {
             <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                <a class="page-link" asp-action="Paginated" asp-routepage="@i">@i</a>
+                <a class="page-link" asp-action="Paginated" asp-route-page="@i">@i</a>
             </li>
         }
         @if (ViewBag.HasNextPage)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Paginated" asp-routepage="@(ViewBag.CurrentPage + 1)">Вперёд</a>
+                <a class="page-link" asp-action="Paginated" asp-route-page="@(ViewBag.CurrentPage + 1)">Вперёд</a>
             </li>
         }
         else

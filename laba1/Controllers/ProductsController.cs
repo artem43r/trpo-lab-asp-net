@@ -171,7 +171,7 @@ namespace laba1.Controllers
             return View(products);
         }
 
-        public IActionResult Paginated(int page = 1, int pageSize = 5)
+        public IActionResult Paginated(int page = 1, int pageSize = 3)
         {
             var products = _repository.GetProductsWithPagination(page, pageSize);
             var totalPages = _repository.GetTotalPages(pageSize);
